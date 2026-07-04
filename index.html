@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <a href="#" class="logo-link">
+                    <svg viewBox="0 0 167.5 50" class="spotify-logo">
+                        <path fill="currentColor" d="M28.8 0C12.9 0 0 12.9 0 28.8c0 15.9 12.9 28.8 28.8 28.8 15.9 0 28.8-12.9 28.8-28.8C57.6 12.9 44.7 0 28.8 0zm13.2 41.6c-.5.8-1.6 1.1-2.4.6-6.1-3.7-13.7-4.6-22.7-2.5-.9.2-1.9-.3-2.1-1.3-.2-.9.3-1.9 1.3-2.1 10-2.3 18.3-1.3 25.2 2.9.9.5 1.1 1.6.7 2.4zm3.5-7.8c-.6 1-1.9 1.3-2.9.7-7-4.3-17.7-5.5-25.9-3-1.1.3-2.3-.3-2.7-1.4-.3-1.1.3-2.3 1.4-2.7 9.4-2.9 21.2-1.5 29.3 3.5 1 .6 1.3 1.9.8 2.9zm.3-8.1C35.2 20 17.7 19.4 7.6 22.4c-1.6.5-3.2-.4-3.7-2-.5-1.6.4-3.2 2-3.7C17.2 13.3 36.6 14 49.3 21.5c1.4.8 1.9 2.7 1.1 4.1-.8 1.3-2.7 1.8-4.1 1.1z"/>
+                        <text x="68" y="41" font-family="'Montserrat', sans-serif" font-weight="800" font-size="34" fill="currentColor" letter-spacing="-1">Spotify</text>
+                    </svg>
+                </a>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="nav-item active" id="nav-home">
+                            <a href="#">
+                                <i data-lucide="home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="nav-search">
+                            <a href="#">
+                                <i data-lucide="search"></i>
+                                <span>Search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="sidebar-library">
+                <div class="library-header">
+                    <button class="library-btn">
+                        <i data-lucide="library"></i>
+                        <span>Your Library</span>
+                    </button>
+                    <button class="add-btn" title="Create playlist or folder">
+                        <i data-lucide="plus"></i>
+                    </button>
+                </div>
+                <div class="library-content scrollable">
+                    <div class="library-tag-container">
+                        <span class="tag active">Playlists</span>
+                        <span class="tag">Artists</span>
+                        <span class="tag">Albums</span>
+                    </div>
+                    <ul class="playlist-list">
+                        <!-- Playlists rendered by JS -->
+                        <li class="playlist-item active-playlist" data-id="pl-liked">
+                            <div class="playlist-art liked-songs-art">
+                                <i data-lucide="heart" fill="white"></i>
+                            </div>
+                            <div class="playlist-info">
+                                <span class="playlist-name">Liked Songs</span>
+                                <span class="playlist-meta">Playlist • 4 songs</span>
+                            </div>
+                        </li>
+                        <li class="playlist-item" data-id="pl-synth">
+                            <img src="assets/album_synthwave.png" alt="Synthwave" class="playlist-art">
+                            <div class="playlist-info">
+                                <span class="playlist-name">Synthwave Dreams</span>
+                                <span class="playlist-meta">Playlist • Spotify</span>
+                            </div>
+                        </li>
+                        <li class="playlist-item" data-id="pl-chill">
+                            <img src="assets/album_chill.png" alt="Chill Beats" class="playlist-art">
+                            <div class="playlist-info">
+                                <span class="playlist-name">Lo-Fi Study Beats</span>
+                                <span class="playlist-meta">Playlist • Study Club</span>
+                            </div>
+                        </li>
+                        <li class="playlist-item" data-id="pl-cyber">
+                            <img src="assets/album_cyberpunk.png" alt="Cyberpunk" class="playlist-art">
+                            <div class="playlist-info">
+                                <span class="playlist-name">Cyberpunk Night</span>
+                                <span class="playlist-meta">Playlist • Netrunner</span>
+                            </div>
+                        </li>
+                        <li class="playlist-item" data-id="pl-jazz">
+                            <img src="assets/album_jazz.png" alt="Jazz Cafe" class="playlist-art">
+                            <div class="playlist-info">
+                                <span class="playlist-name">Midnight Jazz Cafe</span>
+                                <span class="playlist-meta">Playlist • Coffee Shop</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-container">
+            <!-- Glassmorphic Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <div class="nav-arrows">
+                        <button class="arrow-btn" disabled><i data-lucide="chevron-left"></i></button>
+                        <button class="arrow-btn" disabled><i data-lucide="chevron-right"></i></button>
+                    </div>
+                    <!-- Search Input (Only displays inside Search View) -->
+                    <div class="search-bar-container hidden" id="header-search-bar">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" id="search-input" placeholder="What do you want to play?" autocomplete="off">
+                        <button class="clear-search-btn hidden" id="clear-search"><i data-lucide="x"></i></button>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="premium-badge hide-mobile">Explore Premium</a>
+                    <button class="install-badge hide-mobile"><i data-lucide="arrow-down-circle"></i> Install App</button>
+                    <button class="bell-btn"><i data-lucide="bell"></i></button>
+                    <button class="profile-btn">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Profile" class="profile-pic">
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Scrollable Content Panel -->
+            <main class="content-panel scrollable" id="main-content">
+                
+                <!-- HOME VIEW TAB -->
+                <div class="tab-content" id="home-view">
+                    <!-- Dynamic Greeting Section -->
+                    <section class="welcome-section">
+                        <h1 id="greeting-text">Good morning</h1>
+                        <div class="quick-grid">
+                            <!-- Quick Grid Cards (6 songs/playlists) -->
+                            <div class="quick-card" data-song-id="1">
+                                <img src="assets/album_synthwave.png" alt="Synthwave">
+                                <span>Synthwave Dreams</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                            <div class="quick-card" data-song-id="3">
+                                <img src="assets/album_chill.png" alt="Chill">
+                                <span>Lo-Fi Study Beats</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                            <div class="quick-card" data-song-id="5">
+                                <img src="assets/album_cyberpunk.png" alt="Cyber">
+                                <span>Cyberpunk Night</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                            <div class="quick-card" data-song-id="7">
+                                <img src="assets/album_jazz.png" alt="Jazz">
+                                <span>Midnight Jazz Cafe</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                            <div class="quick-card" data-song-id="2">
+                                <img src="assets/album_synthwave.png" alt="Synthwave">
+                                <span>Neon Cityscape</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                            <div class="quick-card" data-song-id="4">
+                                <img src="assets/album_chill.png" alt="Chill">
+                                <span>Rainy Days</span>
+                                <button class="play-shortcut-btn"><i data-lucide="play" fill="black"></i></button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Curated Music Card Grids -->
+                    <section class="shelf-section">
+                        <div class="shelf-header">
+                            <h2>Recently Played</h2>
+                            <a href="#" class="show-all">Show all</a>
+                        </div>
+                        <div class="card-grid" id="recently-played-grid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </section>
+
+                    <section class="shelf-section">
+                        <div class="shelf-header">
+                            <h2>Made For You</h2>
+                            <a href="#" class="show-all">Show all</a>
+                        </div>
+                        <div class="card-grid" id="made-for-you-grid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- SEARCH VIEW TAB -->
+                <div class="tab-content hidden" id="search-view">
+                    <!-- Standard Browse All Categories -->
+                    <div id="search-default-content">
+                        <h2>Browse all</h2>
+                        <div class="category-grid">
+                            <div class="category-card" style="background-color: #E8115B;">
+                                <h3>Podcasts</h3>
+                                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=150&q=80" alt="Podcasts">
+                            </div>
+                            <div class="category-card" style="background-color: #1E3264;">
+                                <h3>Made For You</h3>
+                                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=150&q=80" alt="Made For You">
+                            </div>
+                            <div class="category-card" style="background-color: #8D67AB;">
+                                <h3>New Releases</h3>
+                                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=150&q=80" alt="New Releases">
+                            </div>
+                            <div class="category-card" style="background-color: #E1118C;">
+                                <h3>Pop</h3>
+                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=150&q=80" alt="Pop">
+                            </div>
+                            <div class="category-card" style="background-color: #7D4B32;">
+                                <h3>Hip-Hop</h3>
+                                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=150&q=80" alt="Hip-Hop">
+                            </div>
+                            <div class="category-card" style="background-color: #503750;">
+                                <h3>Rock</h3>
+                                <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=150&q=80" alt="Rock">
+                            </div>
+                            <div class="category-card" style="background-color: #2D46B9;">
+                                <h3>Chill</h3>
+                                <img src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&w=150&q=80" alt="Chill">
+                            </div>
+                            <div class="category-card" style="background-color: #BA5D07;">
+                                <h3>Jazz</h3>
+                                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=150&q=80" alt="Jazz">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Results Area (Hidden until search is typed) -->
+                    <div id="search-results-content" class="hidden">
+                        <div class="search-results-layout">
+                            <div class="top-result-section">
+                                <h2>Top result</h2>
+                                <div class="top-result-card" id="top-result-card-container">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+                            <div class="songs-result-section">
+                                <h2>Songs</h2>
+                                <div class="songs-list-container" id="songs-search-results">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Bottom Playback Control Bar -->
+        <footer class="player-bar">
+            <!-- Left Side: Song details -->
+            <div class="player-track-info">
+                <img src="assets/album_synthwave.png" alt="Album Art" class="player-album-art" id="player-art">
+                <div class="player-song-meta">
+                    <span class="player-song-title" id="player-title">Retro Sunrise</span>
+                    <span class="player-song-artist" id="player-artist">Futurecop!</span>
+                </div>
+                <button class="player-like-btn" id="player-like" title="Save to Your Library">
+                    <i data-lucide="heart"></i>
+                </button>
+            </div>
+
+            <!-- Center Side: Controls -->
+            <div class="player-playback-controls">
+                <div class="control-buttons">
+                    <button class="ctrl-btn" id="player-shuffle" title="Enable shuffle"><i data-lucide="shuffle"></i></button>
+                    <button class="ctrl-btn" id="player-prev" title="Previous"><i data-lucide="skip-back" fill="currentColor"></i></button>
+                    <button class="ctrl-btn-play" id="player-play" title="Play"><i data-lucide="play" fill="black"></i></button>
+                    <button class="ctrl-btn" id="player-next" title="Next"><i data-lucide="skip-forward" fill="currentColor"></i></button>
+                    <button class="ctrl-btn" id="player-repeat" title="Enable repeat"><i data-lucide="repeat"></i></button>
+                </div>
+                <div class="playback-progress">
+                    <span class="time-stamp" id="time-current">0:00</span>
+                    <div class="slider-container" id="timeline-slider-container">
+                        <div class="slider-track" id="timeline-slider-track"></div>
+                        <div class="slider-fill" id="timeline-slider-fill" style="width: 0%;"></div>
+                        <div class="slider-thumb" id="timeline-slider-thumb" style="left: 0%;"></div>
+                    </div>
+                    <span class="time-stamp" id="time-total">2:45</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Utility Controls -->
+            <div class="player-utility-controls">
+                <button class="util-btn hide-tablet" title="Lyrics"><i data-lucide="mic-2"></i></button>
+                <button class="util-btn hide-tablet" title="Queue"><i data-lucide="list-music"></i></button>
+                <button class="util-btn" title="Connect to a device"><i data-lucide="laptop-2"></i></button>
+                <div class="volume-control-wrapper">
+                    <button class="util-btn" id="player-volume-btn" title="Mute/Unmute"><i data-lucide="volume-2"></i></button>
+                    <div class="slider-container volume-slider" id="volume-slider-container">
+                        <div class="slider-track"></div>
+                        <div class="slider-fill" id="volume-slider-fill" style="width: 70%;"></div>
+                        <div class="slider-thumb" id="volume-slider-thumb" style="left: 70%;"></div>
+                    </div>
+                </div>
+                <button class="util-btn hide-tablet" title="Fullscreen"><i data-lucide="maximize-2"></i></button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Core App Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
