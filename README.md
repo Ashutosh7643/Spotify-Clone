@@ -4,6 +4,20 @@ A high-fidelity, interactive user interface clone of the Spotify Web Player buil
 
 This application clones Spotify's premium visual appearance and features layout scaling, interactive tab pages, custom sliders, search functionality, and audio playback timeline simulation.
 
+👉 **[Live Demo URL](https://spotify-clone-three-bay.vercel.app/)**
+
+---
+
+## 📸 UI Screenshots
+
+### 🏠 Home Dashboard Page
+![Home Page Screenshot](assets/screenshot_home.png)
+
+### 🔍 Search Page (Empty & Active State)
+| Empty Search View | Active Search Results |
+|:---:|:---:|
+| ![Search Empty](assets/screenshot_search.png) | ![Search Active](assets/screenshot_search_active.png) |
+
 ---
 
 ## 🚀 Key Features
@@ -34,11 +48,14 @@ This application clones Spotify's premium visual appearance and features layout 
 ## 📂 Project Structure
 
 ```
-├── assets/                  # Generated album cover arts
+├── assets/                  # Generated album cover arts and screenshots
 │   ├── album_chill.png
 │   ├── album_cyberpunk.png
 │   ├── album_jazz.png
-│   └── album_synthwave.png
+│   ├── album_synthwave.png
+│   ├── screenshot_home.png
+│   ├── screenshot_search.png
+│   └── screenshot_search_active.png
 ├── index.html               # Main page layout
 ├── style.css                # Visual stylesheets and animations
 ├── script.js                # Core interactive player logic
